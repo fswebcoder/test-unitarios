@@ -1,0 +1,27 @@
+<!--
+  Recuerde conservar los id, no deben ser modificados
+  ids = nav-bar__btn-list-user, nav-bar__btn-create-user, nav-bar__btn-logout
+-->
+<div class="layout-topbar">
+  <div class="layout-topbar-start">
+    <img src="assets/images/logo/ceiba-logo.png" alt="" />
+    <span class="divider "></span>
+
+  </div>
+  <!-- Small Screem -->
+  <div class="layout-topbar-end">
+    <a routerLink="create" routerLinkActive="router-link-active" class="menu_topbar-item " id="nav-bar__btn-create-user" >
+      <i class="ceiba_icon_group_add mr-9"></i>
+      <span>Crear usuario</span>
+    </a>
+    <a    class="menu_topbar-item " id="nav-bar__btn-list-user">
+      <i class="ceiba_icon_group_format_list_numbered mr-9s"></i>
+      <span>Listar Usuario</span>
+    </a>
+    <a class="close" id="nav-bar__btn-logout" (click)="logout()">
+      <i class="ceiba_icon_logout"></i>
+      <span>Cerrar sesión</span>
+    </a>
+
+  </div>
+</div>

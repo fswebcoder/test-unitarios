@@ -1,0 +1,59 @@
+<!--
+  Recuerde conservar los id, no deben ser modificados
+  ids = user-list__filter, user-list__table,
+  user-list__table-item-[index],
+  user-list__table-item-[index]-avatar,
+  user-list__table-item-[index]-first_name,
+   user-list__table-item-[index]-email,
+   user-list__table-item-[index]-btn-delete
+  Remplazar [index] por el valor ejemplo "user-list__table-item-0"
+-->
+
+<div class="card">
+  <section class="card-text">
+    <div class="">
+      <h3 class="">Listado de usuarios</h3>
+      <div class="filtro">
+        <span class="">
+          <input
+            type="text"
+            id="user-list__filter"
+            placeholder="Filtrar por nombre"
+            [(ngModel)]="inputSearch"
+          />
+        </span>
+      </div>
+      <table class="table" id="user-list__table">
+        <thead>
+          <th>Id</th>
+          <th>Email</th>
+          <th>Firs name</th>
+          <th>Avatar</th>
+          <th>Delete</th>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let item of listusers | filterUserByName:inputSearch; let i = index" id="user-list__table-item-{{i}}">
+            <td data-label="Id">{{item.id}}</td>
+            <td data-label="Email" id="user-list__table-item-{{i}}-email">{{item.email}}</td>
+            <td data-label="Firs name" id="user-list__table-item-{{i}}-first_name">
+              {{item.first_name.trim()}}
+            </td>
+            <td data-label="Avatar">
+              <img [src]="item.avatar" alt="Avatar" id="user-list__table-item-{{i}}-avatar" />
+            </td>
+            <td >
+              <button
+                class="danger"
+                id="user-list__table-item-{{i}}-btn-delete"
+                (click)="deleteUserForIndex(item)"
+              >
+                Delete user
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

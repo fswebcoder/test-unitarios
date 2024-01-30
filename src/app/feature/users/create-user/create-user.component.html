@@ -1,0 +1,54 @@
+<!--
+  Recuerde conservar los id, no deben ser modificados
+  ids = user-create__name, user-create__name-error, user-create__job, user-create__job-error, user-create__btn-create
+-->
+<div class="panel-content">
+  <div class="panel-content_form">
+    <form [formGroup]="form" (submit)="validateForm()">
+      <div class="form-item">
+        <span class="">
+          <label for="user-create__name">Name</label>
+          <input
+            type="text"
+            id="user-create__name"
+            placeholder="Name"
+            formControlName="name"
+          />
+        </span>
+        <div
+          id="user-create__name-error"
+          class="text-danger"
+          *ngIf="
+            form.get('name').hasError('required') && form.get('name').touched
+          "
+        >
+        Name is required
+        </div>
+      </div>
+      <div class="form-item">
+        <span class="">
+          <label for="user-create__job">Job</label>
+          <input
+            type="text"
+            id="user-create__job"
+            formControlName="job"
+            placeholder="Job"
+          />
+        </span>
+        <div
+          id="user-create__job-error"
+          class="text-danger"
+          *ngIf="
+            form.get('job').hasError('required') &&
+            form.get('job').touched
+          "
+        >
+        Job is required
+        </div>
+      </div>
+      <div class="form-item">
+        <button id="user-create__btn-create" [disabled]="form.invalid" type="submit">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>

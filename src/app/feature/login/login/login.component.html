@@ -1,0 +1,85 @@
+<!--
+  Recuerde conservar los id, no deben ser modificados
+  ids = login__email, login__password, login__password-error, login__email-error, login__btn-login
+-->
+<div class="login-body">
+  <div class="login-panel">
+    <div class="login-panel-header">
+      <img src="assets/images/logo/ceiba-logo.png" />
+      <div class="login-panel-content_wellcome">
+        <p>Bienvenidos, esta es mi prueba técnica</p>
+      </div>
+    </div>
+    <div class="login-panel-content">
+      <div class="login-panel-content">
+        <div class="login-panel-content_form-login">
+          <form [formGroup]="form">
+            <div class="form-item">
+              <span class="login__email">
+                <label for="login__email">Email</label>
+                <input
+                  type="text"
+                  id="login__email"
+                  placeholder="ceiba@pruebatecnica.com"
+                  formControlName="inputEmail"
+                />
+              </span>
+              <span
+                id="login__email-error"
+                class="text-danger"
+                *ngIf="
+                  form.get('inputEmail').hasError('required') && form.get('inputEmail').touched
+                "
+              >
+              Email is required
+              </span>
+              <span
+                id="login__email-error"
+                class="text-danger"
+                *ngIf="
+                  form.get('inputEmail').hasError('minlength') && form.get('inputEmail').touched
+                "
+              >
+                The minimum of characters will be 8
+              </span>
+            </div>
+            <div class="form-item">
+              <span class="login__password">
+                <label for="login__password">Password</label>
+                <input
+                  type="password"
+                  id="login__password"
+                  formControlName="inputPassword"
+                  placeholder="******"
+                />
+              </span>
+              <div
+                id="login__password-error"
+                class="text-danger"
+                *ngIf="
+                  form.get('inputPassword').hasError('required') &&
+                  form.get('inputPassword').touched
+                "
+              >
+              Password is required
+              </div>
+              <span
+                id="login__password-error"
+                class="text-danger"
+                *ngIf="
+                  form.get('inputPassword').hasError('minlength') &&
+                  form.get('inputPassword').touched
+                "
+              >
+                The minimum of characters will be 8
+              </span>
+            </div>
+            <div class="form-item">
+              <button id="login__btn-login" (click)="validarFormulario()" type="submit">Iniciar Sesión</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
